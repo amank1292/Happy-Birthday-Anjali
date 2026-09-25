@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-wine-bg: #090307;
+  --color-wine-dark: #12060f;
+  --color-rose-glow: rgba(244, 63, 94, 0.35);
+  --color-gold-candle: rgba(255, 190, 11, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-wine-bg);
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(76, 5, 25, 0.35) 0%, transparent 60%),
+    radial-gradient(circle at 10% 30%, rgba(40, 14, 27, 0.4) 0%, transparent 50%),
+    radial-gradient(circle at 90% 70%, rgba(68, 24, 52, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 50% 100%, rgba(20, 7, 14, 0.8) 0%, transparent 70%);
+  background-attachment: fixed;
+  color: #faedf2;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism helpers */
+.glass-panel {
+  background: rgba(26, 10, 20, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
+}
+
+.glass-card {
+  background: rgba(36, 14, 28, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  background: rgba(48, 18, 38, 0.7);
+  border-color: rgba(251, 113, 133, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.6), 0 0 25px rgba(244, 63, 94, 0.18);
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: all 0.3s ease;
+}
+
+.glass-pill:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(251, 113, 133, 0.4);
+}
+
+/* Polaroid editorial frame */
+.polaroid-paper {
+  background: linear-gradient(135deg, #faf7f5 0%, #f4edea 100%);
+  box-shadow: 
+    0 25px 60px -15px rgba(0, 0, 0, 0.8),
+    0 0 45px rgba(244, 63, 94, 0.2),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+}
+
+/* Candle flame animation */
+@keyframes flameFlicker {
+  0%, 100% {
+    transform: scale(1) rotate(-1deg);
+    opacity: 0.95;
+    filter: drop-shadow(0 0 10px #ffb703) drop-shadow(0 0 22px #fb8500);
+  }
+  25% {
+    transform: scale(1.05, 0.95) rotate(1.5deg);
+    opacity: 1;
+    filter: drop-shadow(0 0 14px #ffb703) drop-shadow(0 0 28px #fb8500);
+  }
+  50% {
+    transform: scale(0.96, 1.04) rotate(-0.5deg);
+    opacity: 0.9;
+    filter: drop-shadow(0 0 8px #ffb703) drop-shadow(0 0 20px #fb8500);
+  }
+  75% {
+    transform: scale(1.03, 0.98) rotate(1deg);
+    opacity: 0.98;
+    filter: drop-shadow(0 0 12px #ffb703) drop-shadow(0 0 26px #fb8500);
+  }
+}
+
+.candle-flame {
+  animation: flameFlicker 2.8s infinite ease-in-out;
+  transform-origin: center bottom;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #0d040a;
+}
+::-webkit-scrollbar-thumb {
+  background: #3b1429;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #63224b;
+}
+
+/* Bokeh particles */
+@keyframes bokehDrift {
+  0% {
+    transform: translateY(0px) translateX(0px) scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(-25px) translateX(15px) scale(1.1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(0px) translateX(0px) scale(1);
+    opacity: 0.4;
+  }
+}
+
+.bokeh-orb {
+  animation: bokehDrift 9s infinite ease-in-out alternate;
+}
+
+/* Romantic text glow */
+.text-glow-rose {
+  text-shadow: 0 0 25px rgba(244, 63, 94, 0.5), 0 0 50px rgba(244, 63, 94, 0.25);
+}
+
+.text-glow-gold {
+  text-shadow: 0 0 20px rgba(255, 209, 102, 0.6), 0 0 40px rgba(255, 183, 3, 0.3);
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
