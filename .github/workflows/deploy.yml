@@ -34,7 +34,7 @@ jobs:
         env:
           GITHUB_ACTIONS: 'true'
           GITHUB_REPOSITORY: ${{ github.repository }}
-          NEXT_PUBLIC_BASE_PATH: /Happy-Birthday
+          NEXT_PUBLIC_BASE_PATH: /Happy-Birthday-Anjali
         run: npm run build
 
       - name: Upload Pages artifact
